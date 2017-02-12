@@ -17,7 +17,7 @@ urlpatterns = [
 
 ]
 # url(r'^dienst/new/$', views.dienst_new, name='dienst_new'),
-
+#now surely updated
 #url('^', include('django.contrib.auth.urls')),
 #url(r'^$', views.startpage, name='startpage'),
 #  url(r'^login/$', 'django.contrib.auth.views.login'),
