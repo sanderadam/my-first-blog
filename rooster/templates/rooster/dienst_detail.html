@@ -1,0 +1,44 @@
+{% extends 'rooster/base_edit.html' %}
+
+{% block content %}
+
+
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center my-white">
+            <h3>Hoi <b>{{user}}</b>, hierbij de details van de geselecteerde dienst</h3>
+            <br>
+            <!-- Sander -->
+            <div class = "container my-maxwidth my-dienst-container">
+
+                <div class ="row">
+                    <div class="col-xs-12 my-bold">{{ dienst.beschrijving }} {{ dienst.date }}
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12"> {{ dienst.chauffeur }}
+                    </div>
+                    <div class="col-xs-12"> {{ dienst.begintijd }} tot {{ dienst.eindtijd }} ({{dienst.dienst_duur}} uur)
+
+
+
+                    </div>
+
+                </div>
+                <br>
+                <div class = "row">
+
+                    <a class="btn btn-default" href="{% url 'mainpage' %}"><span class="glyphicon glyphicon-ok"></span></a>
+                    <a class="btn btn-default" href="{% url 'dienst_edit' pk=dienst.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+
+
+                </div>
+
+            </div>
+    </header>
+
+
+
+{% endblock %}

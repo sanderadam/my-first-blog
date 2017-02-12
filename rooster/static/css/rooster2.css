@@ -1,0 +1,98 @@
+
+.my-dark {
+    background-color: #999;
+    color: #fff;
+}
+
+.my-light {
+    background-color: #fff;
+    color: #828282;
+}
+
+
+
+.bgorange {
+    background-color: rgb(255,153,0);
+    color: #000;
+    font-weight: bold;
+}
+
+.my-white {
+    color: #FFF;
+}
+
+   .my-maxwidth {
+    width: 320px;
+}
+
+    .my-nopadding {
+    padding: 0px;
+    }
+
+    .my-buttonheight {
+      height: 50px !important;
+
+    }
+
+    .my-align {
+    vertical-align: middle;
+    text-align: middle;
+
+    }
+
+    .my-color {
+    background-color: #000;
+    color: #fff;
+        }
+
+      .my-margin {
+    margin-top: 10px;
+        }
+
+
+    .round-blue {
+
+    border: 2px solid;
+    border-radius: 5px;
+    border-color: rgb(66,139,202);
+
+    }
+
+    .my-firstrow {
+    font-family: Helvetica;
+    background-color: rgb(66,139,202);
+    color: #FFF;
+    font-weight: bold;
+
+    }
+
+    .my-right {
+    text-align: right;
+    }
+
+    .my-bold {
+    font-weight: bold;
+    }
+
+    .my-tableborder {
+    border: 0px solid;
+    border-color: #333;
+    }
+
+    .my-row {
+    border-style: solid;
+    border-width: 1px 0px;
+    border-color: #ccc;
+
+    }
+
+    .my-smallfont {
+    font-size: 1.2em;
+    }
+
+    .my-dienst-container {
+    background-color: rgba(256, 256, 256, 0.7);
+    color: #000;
+    alpha: 50%;
+    padding: 20px;
+    }

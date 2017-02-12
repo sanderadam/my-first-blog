@@ -1,0 +1,33 @@
+{% extends 'rooster/base.html' %}
+
+{% block content %}
+
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center my-white">
+            <h1>Start Assistentie</h1>
+            <h3>Betrouwbare HAP chauffeursdiensten</h3>
+            <h3>{{ user }}</h3>
+            <br>
+            <a href="#about" class="btn btn-dark btn-lg">Meer informatie</a>
+            <a href="#about" class="btn btn-dark btn-lg">Inloggen</a>
+        </div>
+    </header>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Stylish Portfolio is the perfect theme for your next project!</h2>
+                    <p class="lead">This theme features some wonderful photography courtesy of <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a>.</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+
+
+{% endblock %}

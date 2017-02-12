@@ -1,0 +1,65 @@
+{% extends 'rooster/base2.html' %}
+
+
+
+
+{% block content %}
+
+
+
+
+<section id ="diensten">
+    <div class = "container">
+
+      <h1>  Alle diensten van {{month_text}}, {{year}} </h1>
+    </div>
+
+
+    <div class = "container round-blue">
+        <div class="row my-firstrow">
+
+            <div class="col-xs-12">
+
+                Diensten
+
+            </div>
+
+        </div>
+
+        {% for dienst in diensten %}
+
+        <div class="row my-row">
+
+            <div class="col-xs-11">
+                <div class="row">
+                    <div class="col-xs-12 my-bold">{{ dienst.beschrijving }} {{ dienst.date }}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-6"> {{ dienst.chauffeur }}
+                    </div>
+                    <div class="col-xs-6 my-right"> {{ dienst.begintijd }} tot {{ dienst.eindtijd }} ({{dienst.dienst_duur}} uur)
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-1">
+
+                <a href="{% url 'dienst_detail' pk=dienst.pk %}">
+                    <span class="glyphicon glyphicon-pencil my-smallfont"></span>
+                </a>
+
+            </div>
+        </div>
+
+            {% endfor %}
+
+    </div>
+
+
+    </div>
+
+</section>
+
+{% endblock %}
