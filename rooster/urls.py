@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^main/$', views.mainpage, name='mainpage'),
     url(r'^dienst/(?P<pk>\d+)/$', views.dienst_detail, name='dienst_detail'),
     url(r'^dienstlijst/(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/$', views.dienst_list, name='dienstlijst'),
-    url(r'^dienst_chauffeur/(?P<chauffeur_pk>[0-9]{2})/(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/$', views.dienst_chauffeur, name='dienst_chauffeur'),
+    url(r'^dienst_chauffeur/(?P<chauffeur_pk>[0-9]{1,2})/(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/$', views.dienst_chauffeur, name='dienst_chauffeur'),
     url(r'^dienst/(?P<pk>\d+)/edit/$', views.dienst_edit, name='dienst_edit'),
     url(r'^diensten_toevoegen/$', views.diensten_toevoegen, name='diensten_toevoegen'),
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'rooster/base_login.html'}),
