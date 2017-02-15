@@ -118,7 +118,10 @@ def diensten_toevoegen(request):
     return render(request,'rooster/diensten_toevoegen.html', {'formset': formset})
 
 def startpage(request):
-    return render(request, 'rooster/startpage.html', {'user':request.user})
+    if request.user.is_authenticated():
+        return mainpage(request)
+    else:
+        return render(request, 'rooster/startpage.html', {'user':request.user})
 
 
 @login_required
