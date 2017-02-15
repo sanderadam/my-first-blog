@@ -13,7 +13,6 @@ class Dienst(models.Model):
     date = models.DateField()
     begintijd = models.TimeField()
     eindtijd = models.TimeField()
-    percentage = models.FloatField()
 
     def __str__(self):
         return self.beschrijving + " " + self.date.strftime("%Y-%m-%d")
@@ -59,7 +58,6 @@ class StdDienst(models.Model):
     date = models.DateField()
     begintijd = models.TimeField()
     eindtijd = models.TimeField()
-    percentage = models.FloatField()
 
     def __str__(self):
         return self.beschrijving
