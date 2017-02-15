@@ -92,7 +92,7 @@ def diensten_toevoegen(request):
     month = 2
     dates_list = []
 
-    for i in range(1,28):
+    for i in range(1,29):
         for stdDienst_i in stdDienst_list:
             i_date = datetime.date(year,month,i)
             if(i_date.weekday()==stdDienst_i['date'].weekday()):
