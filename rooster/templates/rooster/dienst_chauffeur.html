@@ -48,7 +48,21 @@
                     <div class="col-xs-7 my-right"> {{ dienst.begintijd }} tot {{ dienst.eindtijd }} ({{dienst.dienst_duur}} uur)
                     </div>
                 </div>
+
+                {% if dienst.comments %}
+
+                <div class="row my-comment">
+                    <div class="col-xs-12"> {{ dienst.comments }}
+                    </div>
+
+                </div>
+
+                {% endif %}
             </div>
+
+
+
+
 
             <div class="col-xs-1">
 

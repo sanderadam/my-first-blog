@@ -7,7 +7,7 @@ class DienstForm(forms.ModelForm):
 
     class Meta:
         model = Dienst
-        fields = ('beschrijving', 'chauffeur', 'date', 'begintijd','eindtijd')
+        fields = ('beschrijving', 'chauffeur', 'date', 'comments','begintijd','eindtijd')
         widgets = {
             #Use localization and bootstrap 3
             'begintijd': TimeWidget(attrs={'id':"begintijd"}, usel10n = True, bootstrap_version=3),

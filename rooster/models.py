@@ -8,11 +8,12 @@ from django.dispatch import receiver
 
 class Dienst(models.Model):
     beschrijving = models.CharField(max_length=200)
-    comments = models.TextField
+    comments = models.CharField(max_length=1000, blank=True, default="")
     chauffeur = models.ForeignKey('Chauffeur')
     date = models.DateField()
     begintijd = models.TimeField()
     eindtijd = models.TimeField()
+
 
     def __str__(self):
         return self.beschrijving + " " + self.date.strftime("%Y-%m-%d")
