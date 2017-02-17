@@ -83,16 +83,17 @@ def dienst_edit(request, pk):
             print('not valid')
     else:
         form = DienstForm(instance=dienst)
-    return render(request, 'rooster/dienst_edit.html', {'form': form})
+    return render(request, 'rooster/dienst_edit.html', {'form': form, 'dienst': dienst})
 
 @login_required
-def diensten_toevoegen(request):
+def diensten_toevoegen(request, month):
     stdDienst_list = list(StdDienst.objects.all().values('beschrijving','date','chauffeur','begintijd','eindtijd'))
     year = 2017
-    month = 2
+    month = int(month)
+    days_in_month = calendar.monthrange(year,month)[1]
     dates_list = []
 
-    for i in range(1,29):
+    for i in range(1,days_in_month+1):
         for stdDienst_i in stdDienst_list:
             i_date = datetime.date(year,month,i)
             if(i_date.weekday()==stdDienst_i['date'].weekday()):
@@ -108,7 +109,7 @@ def diensten_toevoegen(request):
             for form in formset:
                 print(form)
                 form.save()
-            return redirect('diensten_toevoegen')
+            return redirect('diensten_toevoegen', month=month)
         else:
             print('not valid')
     else:

@@ -24,8 +24,8 @@
 
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-        <button href="/main/" class="save btn btn-default">Cancel</button>
+        <button type="submit" class="save btn btn-default"><span class="glyphicon glyphicon-ok"></button>
+        <a href="/dienst/{{dienst.pk}}/" class="btn btn-default"><span class="glyphicon glyphicon-remove"></a>
     </form>
 
                     </div>

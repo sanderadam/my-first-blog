@@ -21,10 +21,13 @@
                     <div class="col-xs-12"> {{ dienst.chauffeur }}
                     </div>
                     <div class="col-xs-12"> {{ dienst.begintijd }} tot {{ dienst.eindtijd }} ({{dienst.dienst_duur}} uur)
-
-
-
                     </div>
+
+                        {% if dienst.comments %}
+                        <div class="col-xs-12 my-comment"> {{dienst.comments }} </div>
+                        {% endif %}
+
+
 
                 </div>
                 <br>
