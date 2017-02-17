@@ -52,14 +52,12 @@
 
 
 
-
      <link href="/static/css/rooster2.css" rel="stylesheet">
 
 
 </head>
 
 <body>
-
 
     <!-- Header -->
     <header id="top" class="header">
@@ -91,13 +89,21 @@
 
                 {% endfor %}
 
-                
+
 
             </div>
 
 
         </div>
+
+    <div class=" btn btn-dark my-logout">
+         <a href = "/accounts/logout" class="my-white">Log out</a>
+    </div>
+
     </header>
+
+
+
 
 {% block content %}
 {% endblock %}

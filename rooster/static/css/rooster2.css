@@ -25,78 +25,86 @@
     width: 320px;
 }
 
-    .my-nopadding {
-    padding: 0px;
+.my-nopadding {
+padding: 0px;
+}
+
+.my-buttonheight {
+  height: 50px !important;
+
+}
+
+.my-align {
+vertical-align: middle;
+text-align: middle;
+
+}
+
+.my-color {
+background-color: #000;
+color: #fff;
     }
 
-    .my-buttonheight {
-      height: 50px !important;
-
+  .my-margin {
+margin-top: 10px;
     }
 
-    .my-align {
-    vertical-align: middle;
-    text-align: middle;
 
-    }
+.round-blue {
 
-    .my-color {
-    background-color: #000;
-    color: #fff;
-        }
+border: 2px solid;
+border-radius: 5px;
+border-color: rgb(66,139,202);
 
-      .my-margin {
-    margin-top: 10px;
-        }
+}
 
+.my-firstrow {
+font-family: Helvetica;
+background-color: rgb(66,139,202);
+color: #FFF;
+font-weight: bold;
 
-    .round-blue {
+}
 
-    border: 2px solid;
-    border-radius: 5px;
-    border-color: rgb(66,139,202);
+.my-right {
+text-align: right;
+}
 
-    }
+.my-bold {
+font-weight: bold;
+}
 
-    .my-firstrow {
-    font-family: Helvetica;
-    background-color: rgb(66,139,202);
-    color: #FFF;
-    font-weight: bold;
+.my-tableborder {
+border: 0px solid;
+border-color: #333;
+}
 
-    }
+.my-row {
+border-style: solid;
+border-width: 1px 0px;
+border-color: #ccc;
 
-    .my-right {
-    text-align: right;
-    }
+}
 
-    .my-bold {
-    font-weight: bold;
-    }
+.my-smallfont {
+font-size: 1.2em;
+}
 
-    .my-tableborder {
-    border: 0px solid;
-    border-color: #333;
-    }
+.my-dienst-container {
+background-color: rgba(256, 256, 256, 0.7);
+color: #000;
+alpha: 50%;
+padding: 20px;
+}
 
-    .my-row {
-    border-style: solid;
-    border-width: 1px 0px;
-    border-color: #ccc;
+.my-comment {
+color: #f00;
+}
 
-    }
+.my-logout {
+position: absolute;
+right:    20px;
+top:   20px;
+color: #FFF;
+}
 
-    .my-smallfont {
-    font-size: 1.2em;
-    }
-
-    .my-dienst-container {
-    background-color: rgba(256, 256, 256, 0.7);
-    color: #000;
-    alpha: 50%;
-    padding: 20px;
-    }
-
-    .my-comment {
-    color: #f00;
-    }

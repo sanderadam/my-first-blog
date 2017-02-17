@@ -13,6 +13,7 @@ class Dienst(models.Model):
     date = models.DateField()
     begintijd = models.TimeField()
     eindtijd = models.TimeField()
+    feestdagen = models.FloatField(default = 1)
 
 
     def __str__(self):

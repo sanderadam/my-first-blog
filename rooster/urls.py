@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^dienst/(?P<pk>\d+)/edit/$', views.dienst_edit, name='dienst_edit'),
     url(r'^diensten_toevoegen/(?P<month>[0-9]{1,2})/$', views.diensten_toevoegen, name='diensten_toevoegen'),
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'rooster/base_login.html'}),
-    url(r'^accounts/logout/$', auth_views.logout, name='logout'),
+    url(r'^accounts/logout/$', auth_views.logout, {'template_name': 'rooster/base_logout.html'}),
     url(r'^excel/$', views.download_excel, name='download_excel'),
 
 ]
