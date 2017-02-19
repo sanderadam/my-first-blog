@@ -12,6 +12,39 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 import xlsxwriter
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+from rooster.rooster_api import DienstSerializer
+
+
+class JSONResponse(HttpResponse):
+    """
+    An HttpResponse that renders its content into JSON.
+    """
+    def __init__(self, data, **kwargs):
+        content = JSONRenderer().render(data)
+        kwargs['content_type'] = 'application/json'
+        super(JSONResponse, self).__init__(content, **kwargs)
+
+
+@csrf_exempt
+def api_list(request, pk):
+    """
+    List all code snippets, or create a new snippet.
+    """
+    if request.method == 'GET':
+        dienst = Dienst.objects.get(pk=pk)
+        serializer = DienstSerializer(dienst, many=False)
+        return JSONResponse(serializer.data)
+
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = DienstSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JSONResponse(serializer.data, status=201)
+        return JSONResponse(serializer.errors, status=400)
 
 def month_text(month):
     month_list = [

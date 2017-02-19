@@ -1,7 +1,27 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from . import views
+from django.contrib.auth.models import User
 #from django.contrib.auth import views as authviews
 from django.contrib.auth import views as auth_views
+from rest_framework import routers, serializers, viewsets
+from .models import Dienst
+
+# Serializers define the API representation.
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('url', 'username', 'email', 'is_staff')
+
+
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = Dienst.objects.all()
+    serializer_class = UserSerializer
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+
 
 urlpatterns = [
     url(r'^$', views.startpage, name='startpage'),
@@ -14,7 +34,9 @@ urlpatterns = [
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'rooster/base_login.html'}),
     url(r'^accounts/logout/$', auth_views.logout, {'template_name': 'rooster/base_logout.html'}),
     url(r'^excel/$', views.download_excel, name='download_excel'),
-
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-list/(?P<pk>\d+)/', views.api_list, name='api-list')
 ]
 # url(r'^dienst/new/$', views.dienst_new, name='dienst_new'),
 #now surely updated
