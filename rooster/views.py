@@ -160,7 +160,7 @@ def startpage(request):
 
 @login_required
 def dienst_list(request, year, month):
-    diensten = Dienst.objects.filter(date__year=year).filter(date__month=month).order_by('date','begintijd')
+    diensten = Dienst.objects.filter(date__year=year).filter(date__month=month).order_by('-date')
     print('list')
 
     chauffeur = Chauffeur.objects.get(user_id=request.user)
