@@ -18,9 +18,6 @@ urlpatterns = [
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'rooster/base_login.html'}),
     url(r'^accounts/logout/$', auth_views.logout, {'template_name': 'rooster/base_logout.html'}),
     url(r'^excel/$', views.download_excel, name='download_excel'),
-    url(r'^api/', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api-list/(?P<pk>\d+)/', views.api_list, name='api-list')
 ]
 # url(r'^dienst/new/$', views.dienst_new, name='dienst_new'),
 #now surely updated
