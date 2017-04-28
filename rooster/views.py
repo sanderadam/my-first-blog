@@ -178,7 +178,7 @@ def dienst_list(request, year, month):
 
 @login_required
 def dienst_chauffeur(request, chauffeur_pk, year, month):
-    diensten = Dienst.objects.filter(chauffeur = chauffeur_pk).filter(date__year=year).filter(date__month=month)
+    diensten = Dienst.objects.filter(chauffeur = chauffeur_pk).filter(date__year=year).filter(date__month=month).order_by('date','begintijd')
     chauffeur = Chauffeur.objects.get(pk = chauffeur_pk)
 
     zipdates = make_months()
