@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rooster',
     'datetimewidget',
-    'rest_framework',
 ]
 
 REST_FRAMEWORK = {
