@@ -3,7 +3,6 @@ from . import views
 from django.contrib.auth.models import User
 #from django.contrib.auth import views as authviews
 from django.contrib.auth import views as auth_views
-from rest_framework import routers, serializers, viewsets
 from .models import Dienst
 
 # Serializers define the API representation.
