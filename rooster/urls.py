@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^diensten_toevoegen/(?P<month>[0-9]{1,2})/$', views.diensten_toevoegen, name='diensten_toevoegen'),
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'rooster/base_login.html'}),
     url(r'^accounts/logout/$', auth_views.logout, {'template_name': 'rooster/base_logout.html'}),
-    url(r'^excel/$', views.download_excel, name='download_excel'),
+    url(r'^excel/(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/$', views.download_excel, name='download_excel'),
 ]
 # url(r'^dienst/new/$', views.dienst_new, name='dienst_new'),
 #now surely updated

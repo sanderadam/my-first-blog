@@ -224,7 +224,7 @@ def login_page(request):
         ...
 
 @login_required
-def download_excel(request):
+def download_excel(request,year,month):
     response = HttpResponse(content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename="mymodel.xlsx"'
     workbook = xlsxwriter.Workbook(response, {'in_memory': True})
@@ -235,16 +235,23 @@ def download_excel(request):
     worksheet.write(0, 0, 'Total')
 
     #query
-    diensten = Dienst.objects.filter(date__year=2017).filter(date__month=2)
+    diensten = Dienst.objects.filter(date__year=year).filter(date__month=month).order_by('date','begintijd')
 
     # Start from the first cell. Rows and columns are zero indexed.
     row = 0
     col = 0
 
+
     # Iterate over the data and write it out row by row.
+    # date month description driver length percentage
     for dienst in diensten:
         worksheet.write(row, col,     dienst.date)
-        worksheet.write(row, col+1,   dienst.dienst_duur())
+        worksheet.write(row, col+1,   dienst.beschrijving)
+        worksheet.write(row, col+2,   dienst.chauffeur.naam)
+        worksheet.write(row, col+3,   dienst.begintijd)
+        worksheet.write(row, col+4,   dienst.eindtijd)
+        worksheet.write(row, col+5,   dienst.dienst_duur())
+        worksheet.write(row, col+6,   dienst.feestdagen)
 
         #worksheet.write(row, col+1,   dienst['chauffeur'])
 
