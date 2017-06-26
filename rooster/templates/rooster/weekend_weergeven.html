@@ -1,0 +1,67 @@
+{% extends 'rooster/base2.html' %}
+
+{% block message %}
+Hoi <b>{{user.chauffeur.naam}}</b>, hier kunt u het komende weekend rooster zien.
+
+{% endblock %}
+
+{% block content %}
+<section id ="diensten">
+
+
+  <div class = "container my-maxwidth2">
+    <h1>Rooster weekend {{datum}}</h1>
+  
+
+  <table class = "round-blue my-maxwidth2">
+    <tr class="my-firstrow">
+      <td> Beschrijving </td>
+      <td> Datum </td>
+      <td> Chauffeur  </td>
+      <td> Begintijd </td>
+      <td> Eindtijd </td>
+    </tr>
+    {% for dienst in diensten %}
+    <tr class="{% cycle '' 'my-overnamerow' %}">
+      <td>{{dienst.beschrijving}}</td>
+      <td>{{dienst.date}}</td>
+      <td>{{dienst.chauffeur}}</td>
+      <td>{{dienst.begintijd}}</td>
+      <td>{{dienst.eindtijd}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+<br><br>
+</section>
+{% endblock %}
+
+<!--
+<section id ="diensten">
+
+    <div class = "container my-maxwidth2">
+          <h1>Rooster weekend {{context.datum}}</h1>
+    </div>
+        <div class = "container round-blue my-maxwidth2">
+        <div class="row my-firstrow">
+                <div class="col-xs-3"> Beschrijving </div>
+                <div class="col-xs-2 text-center"> Datum </div>
+                <div class="col-xs-3 text-center"> Chauffeur  </div>
+                <div class="col-xs-2 text-center"> Begintijd </div>
+                <div class="col-xs-2 text-center"> Eindtijd </div>
+        </div>
+                       {% for dienst in diensten %}
+                                    <div class="row {% cycle '' 'my-overnamerow' %}">
+                                        <div class="col-xs-3">{{dienst.beschrijving}}</div>
+                                        <div class="col-xs-2 text-center">{{dienst.date}}</div>
+                                        <div class="col-xs-3 text-center">{{dienst.chauffeur}}</div>
+                                        <div class="col-xs-2 text-center" >{{dienst.begintijd}}</div>
+                                        <div class="col-xs-2 text-center" >{{dienst.eindtijd}}</div>
+                                    </div>
+                        {% endfor %}
+    </div>
+    </div>
+    <br><br>
+</section>
+
+-->

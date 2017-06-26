@@ -1,0 +1,168 @@
+{% extends 'rooster/base2.html' %}
+
+{% block message %}
+
+Hoi <b>{{user.chauffeur.naam}}</b>, hier kunt u het komende weekend aanpassen.
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<section id ="diensten">
+
+    <div class = "container">
+          <h1>Hierbij de planning voor het weekend van {{datum}}</h1>
+
+
+    </div>
+
+        <div class = "container round-blue">
+
+        <div class="row my-firstrow">
+
+
+
+                <div class="col-xs-3"> Beschrijving </div>
+                <div class="col-xs-2"> Chauffeur </div>
+                <div class="col-xs-2"> Datum  </div>
+                <div class="col-xs-2"> Begintijd </div>
+                <div class="col-xs-2"> Eindtijd </div>
+                <div class="col-xs-1"> Overname? </div>
+
+
+        </div>
+
+
+
+
+
+                        <div class="container"">
+
+                            <form method="POST" class="post-form">{% csrf_token %}
+
+                                {{formset.management_form}}
+                                {% for form in formset %}
+                                    <div class="row">
+
+                                        <div class="col-xs-3">{{form.beschrijving}}</div>
+                                        <div class="col-xs-2 text-center">{{form.date}}</div>
+                                        <div class="col-xs-2 text-center">{{form.chauffeur}}</div>
+                                        <div class="col-xs-2" text-center>{{form.begintijd}}</div>
+                                        <div class="col-xs-2" text-center>{{form.eindtijd}}</div>
+                                        <div class="col-xs-1">{{form.overname}}</div>
+
+
+                                    </div>
+                                    {% for hidden in form.hidden_fields %}
+
+                                        {{hidden}}
+
+                                    {% endfor %}
+                                {% endfor %}
+
+
+
+
+                            <div class="row">
+                                 <div class="col-xs-12 text-center">
+                                <button type="submit" class="save btn btn-default"><span class="glyphicon glyphicon-ok"></button>
+        <a href="/dienstlijst/{{context.backlink}}" class="btn btn-default"><span class="glyphicon glyphicon-remove"></a>
+    </form>
+</div></div>
+                        </div>
+
+
+
+
+
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+<!--
+
+ {% for form in formset %}
+                                    <div class="row">
+
+                                        <div class="col-xs-3">{{form.beschrijving}}</div>
+                                        <div class="col-xs-2 text-center">{{form.date}}</div>
+                                        <div class="col-xs-2 text-center">{{form.chauffeur}}</div>
+                                        <div class="col-xs-2" text-center>{{form.begintijd}}</div>
+                                        <div class="col-xs-2" text-center>{{form.eindtijd}}</div>
+                                        <div class="col-xs-1">{{form.overname}}</div>
+
+
+                                    </div>
+
+                                {% endfor %}
+    {% for field in form %}
+                <div class="fieldWrapper">
+                    {% for error in field.errors %}
+                    <p style="color:red;">{{error}}</p>
+                    {% endfor %}
+
+
+                    {{ field.label_tag }} {{ field }}
+                    {% if field.help_text %}
+
+                    <p>Uw wachtwoord moet minimaal 8 karakters lang zijn.</p>
+
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+
+<form method="POST" class="post-form"><input type='hidden' name='csrfmiddlewaretoken' value='o2SevKUH66cIYCpfxD9gvgBbuNR4Ytxjzm0hrn0FZfZ3LvSBBrECR95ABLPBI6cp' />
+        <p><label for="id_beschrijving">Beschrijving:</label> <input type="text" name="beschrijving" value="Zaterdag avond" required maxlength="200" id="id_beschrijving" /></p>
+<p><label for="id_chauffeur">Chauffeur:</label> <select name="chauffeur" required id="id_chauffeur">
+  <option value="">---------</option>
+
+  <option value="10">Sander Adam</option>
+
+  <option value="12" selected>Mark Adam chauf</option>
+
+</select></p>
+<p><label for="id_date">Date:</label> <input type="text" name="date" value="01-07-2017" required id="id_date" /></p>
+<p><label for="id_comments">Comments:</label> <input type="text" name="comments" maxlength="1000" id="id_comments" /></p>
+<p><label for="begintijd">Begintijd:</label>
+       <div id="2049492a29da419dbd6fb0e16616755b" class="input-group date">
+           <input type="text" name="begintijd" value="15:00:00" required id="begintijd" />
+           <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+           <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+       </div>
+       <script type="text/javascript">
+           $("#2049492a29da419dbd6fb0e16616755b").datetimepicker({language: 'nl',
+minView: 0,
+format: 'hh:ii:ss',
+autoclose: true,
+startView: 1,
+maxView: 1}).find('input').addClass("form-control");
+       </script>
+       </p>
+<p><label for="eindtijd">Eindtijd:</label>
+       <div id="2958f9ec327c4e48871edf839d9c19f7" class="input-group date">
+           <input type="text" name="eindtijd" value="22:00:00" required id="eindtijd" />
+           <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+           <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+       </div>
+       <script type="text/javascript">
+           $("#2958f9ec327c4e48871edf839d9c19f7").datetimepicker({language: 'nl',
+minView: 0,
+format: 'hh:ii:ss',
+autoclose: true,
+startView: 1,
+maxView: 1}).find('input').addClass("form-control");
+       </script>
+       </p>
+<p><label for="id_overname">Deze dienst kan overgenomen worden:</label> <input type="checkbox" name="overname" id="id_overname" /></p>
+        <button type="submit" class="save btn btn-default"><span class="glyphicon glyphicon-ok"></button>
+        <a href="/dienstlijst/2017/07/#diensten" class="btn btn-default"><span class="glyphicon glyphicon-remove"></a>
+    </form>
+
+-->

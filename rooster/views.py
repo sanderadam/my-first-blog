@@ -1,64 +1,42 @@
-from django.shortcuts import render
-
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Dienst, StdDienst, Chauffeur
 from django.utils import timezone
 from .forms import DienstForm
-from django.forms import formset_factory
+from django.forms import formset_factory, modelform_factory, modelformset_factory
 import datetime
 import calendar
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 import xlsxwriter
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from copy import deepcopy
+from django.core.mail import send_mail
+import locale
+from django.db.models import Q
+from datetimewidget.widgets import DateTimeWidget, DateWidget, TimeWidget
 
-
-
-class JSONResponse(HttpResponse):
-    """
-    An HttpResponse that renders its content into JSON.
-    """
-    def __init__(self, data, **kwargs):
-        content = JSONRenderer().render(data)
-        kwargs['content_type'] = 'application/json'
-        super(JSONResponse, self).__init__(content, **kwargs)
-
-
-@csrf_exempt
-def api_list(request, pk):
-    """
-    List all code snippets, or create a new snippet.
-    """
-    if request.method == 'GET':
-        dienst = Dienst.objects.get(pk=pk)
-        serializer = DienstSerializer(dienst, many=False)
-        return JSONResponse(serializer.data)
-
-    elif request.method == 'POST':
-        data = JSONParser().parse(request)
-        serializer = DienstSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JSONResponse(serializer.data, status=201)
-        return JSONResponse(serializer.errors, status=400)
+locale.setlocale(locale.LC_TIME, "nld_NLD")
 
 def month_text(month):
     month_list = [
         'Leeg',
-        'Januari',
-        'Februari',
-        'Maart',
-        'April',
-        'Mei',
-        'Juni',
-        'Juli',
-        'Augustus',
-        'September',
-        'Oktober',
-        'November',
-        'December'
+        'januari',
+        'februari',
+        'maart',
+        'april',
+        'mei',
+        'juni',
+        'juli',
+        'augustus',
+        'september',
+        'oktober',
+        'november',
+        'december'
     ]
     return month_list[month]
 
@@ -102,19 +80,163 @@ def mainpage(request):
 @login_required
 def dienst_edit(request, pk):
     dienst = get_object_or_404(Dienst, pk=pk)
+
+    dienst_old = deepcopy(dienst)
+
     if request.method == "POST":
         form = DienstForm(request.POST, instance=dienst)
         print('form')
         if form.is_valid():
+
             dienst = form.save(commit=False)
             dienst = form.save()
-            print('saved')
-            return redirect('dienst_detail',pk = pk)
+
+            # Send email here
+
+            if (dienst_old.chauffeur.pk != dienst.chauffeur.pk or
+                dienst_old.date != dienst.date or
+                dienst_old.begintijd != dienst.begintijd or
+                dienst_old.eindtijd != dienst.eindtijd or
+                dienst_old.comments != dienst.comments or
+                dienst_old.overname != dienst.overname
+                ):
+
+                if dienst_old.chauffeur.pk == dienst.chauffeur.pk:
+                    emails = ['startvof@gmail.com',
+                              dienst_old.chauffeur.email]
+                    line3 = ""
+                else:
+                    emails = ['startvof@gmail.com',
+                              dienst_old.chauffeur.email,
+                              dienst.chauffeur.email]
+                    line3 = " en " + dienst.chauffeur.naam
+
+                line1 = 'Voor wijziging: {0} {1} door {2} van {3} tot {4}' \
+                        .format(
+                        dienst_old.beschrijving,
+                        dienst_old.date.strftime('%d %B %Y'),
+                        dienst_old.chauffeur.naam,
+                        dienst_old.begintijd.strftime('%H:%M'),
+                        dienst_old.eindtijd.strftime('%H:%M')
+                        )
+
+                line2 = 'Na wijziging:   {0} {1} door {2} van {3} tot {4}' \
+                        .format(
+                        dienst.beschrijving,
+                        dienst.date.strftime('%d %B %Y'),
+                        dienst.chauffeur.naam,
+                        dienst.begintijd.strftime('%H:%M'),
+                        dienst.eindtijd.strftime('%H:%M')
+                        )
+
+
+                body = """
+                Beste {0}{1},
+
+                Er is een dienst wijziging binnen gekomen in het start systeem. De wijziging is als volgt:
+
+                {2}
+                {3}
+
+                Veel succes met de dienst, en stuur ons graag een mailtje als er iets niet klopt.
+
+                Bedankt, Sander en Mark
+
+                """.format(
+                    dienst_old.chauffeur.naam,
+                    line3,
+                    line1,
+                    line2
+                )
+
+
+
+
+
+                send_mail("Rooster wijziging",
+                          body,
+                          "Start Rooster Systeem <noreply@mg.startassistentie.nl>",
+                          emails
+                          )
+
+                # End email
+
+
+            #return redirect('dienst_detail',pk = pk)
+            return redirect('/dienstlijst/{0}/{1}/#diensten'.format(str(dienst.date.year),'{:02d}'.format(dienst.date.month)))
+
+
         else:
             print('not valid')
     else:
         form = DienstForm(instance=dienst)
-    return render(request, 'rooster/dienst_edit.html', {'form': form, 'dienst': dienst})
+
+
+    context = {
+                'backlink': '{0}/{1}/#diensten'.format(str(dienst.date.year),'{:02d}'.format(dienst.date.month))
+
+    }
+
+    return render(request, 'rooster/dienst_edit.html', {'form': form, 'dienst': dienst, 'context':context})
+
+
+@login_required
+def weekend(request):
+
+    fields = ('beschrijving', 'chauffeur', 'date','begintijd','eindtijd','overname')
+    WeekendFormset = modelformset_factory(Dienst, fields = fields, extra=0)
+
+    if request.method == "POST":
+        print('Received POST formset')
+        formset = WeekendFormset(request.POST, request.FILES)
+
+        if formset.is_valid():
+            for form in formset:
+                print(form)
+                form.save()
+            return redirect('/weekend_weergeven/#diensten')
+        else:
+            print('not valid')
+    else:
+        print('go')
+        # Make formset
+
+        # Find weekend
+        today = datetime.datetime.now()
+        date = today + datetime.timedelta(5 - today.weekday())
+        date = datetime.date(2017,7,8)
+
+        #WeekendForm = modelform_factory(Dienst, fields = fields )
+        formset = WeekendFormset(queryset = Dienst.objects.filter(Q(date=date) | Q(date=date + datetime.timedelta(days=1))).exclude(beschrijving='Zondag nacht'))
+        #form = WeekendForm(initial = dienst_chauffeur)
+
+        context = {
+            'datum': date.strftime('%d %B %Y'),
+            'zipdates': make_months(), 
+            'formset': formset
+        }
+        return render(request,'rooster/weekend.html',context)
+
+
+@login_required
+def weekend_weergeven(request):
+    zipdates = make_months()
+    today = datetime.datetime.now()
+    date = today + datetime.timedelta(5 - today.weekday())
+    date = datetime.date(2017,7,8)
+
+    diensten = Dienst.objects.filter(Q(date=date) | Q(date=date + datetime.timedelta(days=1))).exclude(beschrijving='Zondag nacht')
+
+    context = {
+            'datum':date.strftime('%d %B %Y'),
+            'diensten':diensten,
+            'zipdates':zipdates,
+        }
+
+    print(context['zipdates'])
+
+    return render(request,'rooster/weekend_weergeven.html',context)
+
 
 @login_required
 def diensten_toevoegen(request, month):
@@ -272,3 +394,46 @@ def download_excel(request,year,month):
     # now write it out
     workbook.close()
     return response
+
+@login_required
+def overname_diensten(request):
+    diensten = Dienst.objects.filter(overname=True).order_by('date','begintijd')
+
+    zipdates = make_months()
+
+    context = {
+        'zipdates':zipdates,
+        'diensten': diensten,
+
+    }
+
+    return render(request, 'rooster/dienst_overname.html', context)
+
+@login_required
+def weekoverzicht(request):
+    diensten = StdDienst.objects.order_by('date','begintijd')
+    zipdates = make_months()
+    context = {
+        'zipdates':zipdates,
+        'diensten': diensten,
+
+    }
+
+    return render(request, 'rooster/weekoverzicht.html', context)
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('startpage')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'rooster/password2.html', {
+        'form': form
+    })

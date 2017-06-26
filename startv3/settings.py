@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -30,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', '.startassistentie.nl']
 # Application definition
 
 INSTALLED_APPS = [
+    'anymail',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -107,6 +109,19 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+# Email settings
+
+#EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+ANYMAIL = {
+    "MAILGUN_API_KEY": "key-a0fb63f772a74ad90a47071e5e407a22",
+}
+
+
 
 
 # Internationalization

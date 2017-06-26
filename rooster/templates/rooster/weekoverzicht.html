@@ -17,7 +17,7 @@
 <section id ="diensten">
     <div class = "container">
 
-      <h1>  Diensten van {{chauffeur.naam}} in {{month_text}} {{year}} </h1>
+      <h1>  Hier staat het standaard week overzicht</h1>
     </div>
 
 
@@ -34,30 +34,22 @@
 
         {% for dienst in diensten %}
 
-        <div class="row my-row {% if dienst.overname %} my-overnamerow {% endif %}">
+        <div class="row my-row">
 
-            <div class="col-xs-11">
+            <div class="col-xs-12">
                 <div class="row">
-                    <div class="col-xs-12 my-bold">{{ dienst.beschrijving }} {{ dienst.date }}
+                    <div class="col-xs-12 my-bold">{{ dienst.beschrijving }}
                     </div>
 
                 </div>
                 <div class="row">
                     <div class="col-xs-5"> {{ dienst.chauffeur }}
                     </div>
-                    <div class="col-xs-7 my-right"> {{ dienst.begintijd }} tot {{ dienst.eindtijd }} ({{dienst.dienst_duur}} uur)
+                    <div class="col-xs-7 my-right"> {{ dienst.begintijd }} tot {{ dienst.eindtijd }}
                     </div>
                 </div>
 
-                {% if dienst.comments %}
 
-                <div class="row my-comment">
-                    <div class="col-xs-12"> {{ dienst.comments }}
-                    </div>
-
-                </div>
-
-                {% endif %}
             </div>
 
 
@@ -66,9 +58,11 @@
 
             <div class="col-xs-1">
 
+                <!--
                  <a href="{% url 'dienst_edit' pk=dienst.pk %}">
                     <span class="glyphicon glyphicon-pencil my-smallfont"></span>
                 </a>
+                -->
 
             </div>
         </div>

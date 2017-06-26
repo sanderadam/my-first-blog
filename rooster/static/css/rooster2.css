@@ -25,6 +25,10 @@
     width: 320px;
 }
 
+   .my-maxwidth2 {
+    width: 700px;
+}
+
 .my-nopadding {
 padding: 0px;
 }
@@ -108,3 +112,41 @@ top:   20px;
 color: #FFF;
 }
 
+.my-overnemen {
+position: absolute;
+right:    20px;
+top:   60px;
+color: #FFF;
+}
+
+.my-pw-btn {
+position: absolute;
+right:    20px;
+top:   100px;
+color: #FFF;
+}
+
+.my-overnamerow {
+background-color: rgb(240,240,240);
+}
+
+.my-home {
+position: absolute;
+left:    20px;
+top:   20px;
+color: #FFF;
+}
+
+.my-weekend {
+position: absolute;
+left:    20px;
+top:   60px;
+color: #FFF;
+}
+
+.my-weekend-edit {
+position: absolute;
+left:    20px;
+top:   100px;
+color: #FFF;
+}

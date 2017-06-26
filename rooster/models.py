@@ -14,6 +14,7 @@ class Dienst(models.Model):
     begintijd = models.TimeField()
     eindtijd = models.TimeField()
     feestdagen = models.FloatField(default = 1)
+    overname = models.BooleanField(default = False)
 
 
     def __str__(self):
@@ -40,6 +41,8 @@ class Dienst(models.Model):
 class Chauffeur(models.Model):
     naam = models.CharField(max_length=200)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    email = models.EmailField()
+
 
     def __str__(self):
         return self.naam

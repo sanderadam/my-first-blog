@@ -62,7 +62,14 @@
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center my-white">
-            <h3>Hoi <b>{{user.chauffeur.naam}}</b>, waar kunnen we u mee van dienst zijn?</h3>
+
+            <h3>
+{% block message %}
+            Hoi <b>{{user.chauffeur.naam}}</b>, waar kunnen we u mee van dienst zijn?
+{% endblock %}
+            </h3>
+        
+
             <br>
             <!-- Sander -->
             <div class = "container my-maxwidth">
@@ -97,8 +104,37 @@
         </div>
 
     <div class=" btn btn-dark my-logout">
-         <a href = "/accounts/logout" class="my-white">Log out</a>
+         <a href = "/accounts/logout" class="my-white">Uitloggen</a>
     </div>
+
+        <div class=" btn btn-dark my-overnemen">
+         <a href = "/overname-diensten/#diensten" class="my-white">Diensten overnemen</a>
+    </div>
+
+        <div class=" btn btn-dark my-pw-btn">
+        <a href = "/password/" class="my-white">Wachtwoord wijzigen</a>
+    </div>
+
+        {% if request.user.is_superuser %}
+
+
+        <div class=" btn btn-dark my-weekend-edit">
+            <a href = "/weekend/#diensten" class="my-white">Weekend aanpassen</a>
+        </div>
+
+         {% endif %}
+
+
+
+<div class=" btn btn-dark my-weekend">
+            <a href = "/weekend_weergeven/#diensten" class="my-white">Weekend</a>
+        </div>
+
+
+        <div class=" btn btn-dark my-home">
+            <a href = "/" class="my-white">Home</a>
+        </div>
+
 
     </header>
 

@@ -25,7 +25,7 @@
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default"><span class="glyphicon glyphicon-ok"></button>
-        <a href="/dienst/{{dienst.pk}}/" class="btn btn-default"><span class="glyphicon glyphicon-remove"></a>
+        <a href="/dienstlijst/{{context.backlink}}" class="btn btn-default"><span class="glyphicon glyphicon-remove"></a>
     </form>
 
                     </div>
