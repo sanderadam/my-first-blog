@@ -20,7 +20,7 @@ import locale
 from django.db.models import Q
 from datetimewidget.widgets import DateTimeWidget, DateWidget, TimeWidget
 
-locale.setlocale(locale.LC_TIME, "nld_NLD")
+locale.setlocale(locale.LC_TIME, "nl_NL")
 
 def month_text(month):
     month_list = [
