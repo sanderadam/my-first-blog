@@ -42,6 +42,7 @@ class Chauffeur(models.Model):
     naam = models.CharField(max_length=200)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.EmailField()
+    phone = models.CharField(max_length=20)
 
 
     def __str__(self):

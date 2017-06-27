@@ -17,17 +17,17 @@ Hoi <b>{{user.chauffeur.naam}}</b>, hier kunt u het komende weekend rooster zien
     <tr class="my-firstrow">
       <td> Beschrijving </td>
       <td> Datum </td>
-      <td> Chauffeur  </td>
-      <td> Begintijd </td>
-      <td> Eindtijd </td>
+      <td> Tijd  </td>
+      <td> Chauffeur </td>
+      <td> Telefoon </td>
     </tr>
     {% for dienst in diensten %}
     <tr class="{% cycle '' 'my-overnamerow' %}">
       <td>{{dienst.beschrijving}}</td>
       <td>{{dienst.date}}</td>
+      <td>{{dienst.begintijd}} - {{dienst.eindtijd}}</td>
       <td>{{dienst.chauffeur}}</td>
-      <td>{{dienst.begintijd}}</td>
-      <td>{{dienst.eindtijd}}</td>
+      <td>{{dienst.chauffeur.phone}}</td>
     </tr>
     {% endfor %}
   </table>

@@ -1,0 +1,259 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"zp",
+				"zipdates"
+			],
+			[
+				"tr",
+				"tr\tTag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "<html>\n<head>\n<title>\nHenken kunst\n\n</title>\n</head>\n<body>\n\n\n</body>\n</html>\n",
+			"file": "/C/Projects/Henkenkunst/v1/index.html",
+			"file_size": 0,
+			"file_write_time": 131429545854444217,
+			"settings":
+			{
+				"buffer_size": 78,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 215.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			]
+		],
+		"width": 588.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Projects/startv3/startv3/rooster",
+		"/C/Projects/startv3/startv3/rooster/templates",
+		"/C/Projects/startv3/startv3/rooster/templates/rooster"
+	],
+	"file_history":
+	[
+		"/C/Projects/startv3/startv3/rooster/views.py",
+		"/C/Projects/startv3/startv3/rooster/templates/rooster/weekoverzicht.html",
+		"/C/Projects/startv3/startv3/rooster/templates/rooster/weekend.html",
+		"/C/Projects/startv3/startv3/rooster/templates/rooster/weekend_weergeven.html",
+		"/C/Projects/startv3/startv3/rooster/templates/rooster/mainpage.html",
+		"/C/Projects/startv3/startv3/rooster/templates/rooster/base2.html",
+		"/C/Projects/startv3/startv3/rooster/admin.py",
+		"/C/Users/S.Adam/Documents/Printing/Simplify settings/Rollomatic print.gcode",
+		"/C/Projects/Start1/Lib/site-packages/django/forms/__init__.py",
+		"/C/Projects/Start1/Lib/site-packages/django/forms/formsets.py",
+		"/C/Projects/Start1/Lib/site-packages/django/forms/forms.py",
+		"/C/Projects/Start1/Lib/site-packages/django/forms/boundfield.py",
+		"/C/Projects/Start1/Lib/site-packages/django/forms/fields.py",
+		"/C/Projects/Start1/Lib/site-packages/django/forms/models.py",
+		"/C/Users/S.Adam/Downloads/Build11_obj.obj",
+		"/C/Users/S.Adam/Downloads/slipper.obj",
+		"/C/Users/S.Adam/Downloads/OBJ_HouseF/HousF/houseF.obj",
+		"/C/Projects/slicer/Slic3r/lib/Slic3r/Geometry.pm",
+		"/C/Projects/slicer/Slic3r/lib/Slic3r/Format/OBJ.pm",
+		"/C/Projects/slicer/Slic3r/lib/Slic3r/Print/Object.pm"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"block",
+			"zipdates",
+			"div",
+			"modelform_factory",
+			"label_tag",
+			"Widget",
+			"widget",
+			"basetemporalfield",
+			"timefield",
+			"widget",
+			"modelform_factory",
+			"modelform_fact",
+			"modelform_factory",
+			"modelformset_fac",
+			"model"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"td"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Projects/Henkenkunst/v1/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 78,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								35,
+								35
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "start project.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 380.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
