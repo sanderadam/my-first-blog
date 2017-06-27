@@ -113,8 +113,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Email settings
 
-EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 
 
 ANYMAIL = {

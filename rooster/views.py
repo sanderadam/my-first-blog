@@ -19,9 +19,12 @@ from django.core.mail import send_mail
 import locale
 from django.db.models import Q
 from datetimewidget.widgets import DateTimeWidget, DateWidget, TimeWidget
+from django.conf import settings
 
-locale.setlocale(locale.LC_TIME, "nl_NL")
-# locale.setlocale(locale.LC_TIME, "nld_NLD")
+if settings.DEBUG:
+    locale.setlocale(locale.LC_TIME, "nld_NLD")
+else:
+    locale.setlocale(locale.LC_TIME, "nl_NL")
 
 
 def month_text(month):
@@ -133,16 +136,16 @@ def dienst_edit(request, pk):
 
 
                 body = """
-                Beste {0}{1},
+Beste {0}{1},
 
-                Er is een dienst wijziging binnen gekomen in het start systeem. De wijziging is als volgt:
+Er is een dienst wijziging binnen gekomen in het start systeem. De wijziging is als volgt:
 
-                {2}
-                {3}
+{2}
+{3}
 
-                Veel succes met de dienst, en stuur ons graag een mailtje als er iets niet klopt.
+Veel succes met de dienst, en stuur ons graag een mailtje als er iets niet klopt.
 
-                Bedankt, Sander en Mark
+Bedankt, Sander en Mark
 
                 """.format(
                     dienst_old.chauffeur.naam,
