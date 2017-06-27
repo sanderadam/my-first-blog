@@ -228,7 +228,7 @@ def weekend_weergeven(request):
     zipdates = make_months()
     today = datetime.datetime.now()
     date = today + datetime.timedelta(5 - today.weekday())
-    date = datetime.date(2017,7,8)
+    #date = datetime.date(2017,7,8)
 
     diensten = Dienst.objects.filter(Q(date=date) | Q(date=date + datetime.timedelta(days=1))).exclude(beschrijving='Zondag nacht')
 
