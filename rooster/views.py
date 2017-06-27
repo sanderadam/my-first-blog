@@ -209,7 +209,7 @@ def weekend(request):
         # Find weekend
         today = datetime.datetime.now()
         date = today + datetime.timedelta(5 - today.weekday())
-        date = datetime.date(2017,7,8)
+        #date = datetime.date(2017,7,8)
 
         #WeekendForm = modelform_factory(Dienst, fields = fields )
         formset = WeekendFormset(queryset = Dienst.objects.filter(Q(date=date) | Q(date=date + datetime.timedelta(days=1))).exclude(beschrijving='Zondag nacht'))
