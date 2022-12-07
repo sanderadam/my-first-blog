@@ -3,7 +3,7 @@ alabaster==0.7.9
 awesome-slugify==1.6.5
 Babel==2.3.4
 boto==2.45.0
-certifi==2017.4.17
+certifi==2022.12.7
 chardet==3.0.4
 colorama==0.3.7
 contextlib2==0.5.4
